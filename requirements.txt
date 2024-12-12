@@ -1,3 +1,1 @@
-pytest
-string
-random
+pytest==8.3.4

@@ -9,6 +9,5 @@ def generate_password(length: int = 12) -> str:
     return ''.join(random.choice(chars) for _ in range(length))
 
 if __name__ == "__main__":
-    # Define uma entrada padrão de comprimento de senha
-    length = 12  # Aqui você pode definir o valor que preferir ou configurá-lo via argumentos
+    length = 12  # Define um valor padrão de 12 para a geração de senha.
     print(f"Generated Password: {generate_password(length)}")

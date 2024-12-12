@@ -1,4 +1,5 @@
 import pytest
+import string
 from app.password_generator import generate_password
 
 def test_generate_password_length():
