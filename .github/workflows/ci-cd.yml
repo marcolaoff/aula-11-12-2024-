@@ -24,4 +24,9 @@ jobs:
       - name: Check for output.txt
         run: |
           if [ ! -f output.txt ]; then
-            echo "output.txt not 
+            echo "output.txt not found, creating..."
+            docker run --rm password-generator > output.txt
+          else
+            echo "output.txt already exists, skipping generation."
+          fi
+          tar -czf artifacts.tar.gz output.txt
