@@ -21,7 +21,7 @@ jobs:
         run: docker build -t password-generator .
 
       - name: Run Tests
-        run: docker run password-generator
+        run: docker run --rm password-generator
 
       - name: Package Artifacts
         run: |
