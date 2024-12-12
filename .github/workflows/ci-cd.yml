@@ -18,12 +18,12 @@ jobs:
           buildx-version: latest
 
       - name: Build Docker Image
-        run: docker build -t password-generator .
+        run: docker build -t password_generator.
 
       - name: Run Tests
-        run: docker run password-generator
+        run: docker run test_password_generator
 
       - name: Package Artifacts
         run: |
-          docker run --rm password-generator > output.txt
+          docker run --rm password_generator > output.txt
           tar -czf artifacts.tar.gz output.txt
