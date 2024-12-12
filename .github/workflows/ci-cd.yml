@@ -21,7 +21,7 @@ jobs:
       - name: Run Tests
         run: docker run --rm password-generator > output.txt
 
-      - name: Check for output.txt
+      - name: Check for output.txt and create artifact
         run: |
           if [ ! -f output.txt ]; then
             echo "output.txt not found, creating..."
@@ -30,3 +30,9 @@ jobs:
             echo "output.txt already exists, skipping generation."
           fi
           tar -czf artifacts.tar.gz output.txt
+          
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: artifacts
+          path: artifacts.tar.gz
