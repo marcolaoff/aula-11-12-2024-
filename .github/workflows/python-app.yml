@@ -1,0 +1,31 @@
+name: Python application with CD
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.8'
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    - name: Run tests
+      run: |
+        python -m unittest test_password_generator.py
+    - name: Package project
+      run: zip -r setup.zip .
+    - name: Upload artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: setup-artifact
+        path: setup.zip
